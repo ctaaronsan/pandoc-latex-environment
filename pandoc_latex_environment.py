@@ -30,11 +30,11 @@ def environment(key, value, format, meta):
                     title = '[' + currentProperties['title'] + ']'
                 else:
                     title = ''
-                
+
                 # fix an empty block not rendering any output
                 if len(content) == 0:
                     content = [Para([])]
-                
+
                 newconts = []
                 pos = 0
                 last = len(content)
@@ -42,7 +42,7 @@ def environment(key, value, format, meta):
                     replacement = node['c']
                     pos += 1
                     if pos == 1:
-                        replacement = [RawInline('tex', '\\begin{' + environment + '}' + title + '\n' + label)] + replacement
+                        replacement = [RawInline('tex', '\\begin{' + environment + '}' + title + label + '\n')] + replacement
                     if pos == last:
                         replacement = replacement + [RawInline('tex', '\n\\end{' + environment + '}')]
                     newconts.append(
